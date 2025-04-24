@@ -42,7 +42,7 @@ function toggleInfoWindow(index) {
       Toilette conquette
       !!!! &#127881;&#127881;</h1>
     <GoogleMap api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh" :center="center"
-      :zoom="10">
+      :zoom="9">
       <Marker v-for="(marker, index) in pins" :key="index" :options="{ position: marker }"
         @click="toggleInfoWindow(index)">
         <InfoWindow>
