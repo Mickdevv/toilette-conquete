@@ -1,12 +1,11 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Map from './components/Map.vue';
 </script>
 
 <template>
 
   <main>
-    <TheWelcome />
+    <Map />
   </main>
 </template>
 

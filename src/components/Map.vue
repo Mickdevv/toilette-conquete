@@ -1,32 +1,16 @@
 <script setup>
 import { ref } from 'vue'
 import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map'
+import { pins } from '@/assets/pins'
 
-const center = { lat: 43.22208104771956, lng: -0.23202803141978387 }
 
-const markers = [
-  {
-    lat: 43.22208104771956,
-    lng: -0.23202803141978387,
-    info: 'Marker 1 Info',
-    // image: 'https://via.placeholder.com/100x60.png?text=Image+1',
-    link: 'https://example.com/marker1',
-  },
-  {
-    lat: 43.223,
-    lng: -0.233,
-    info: 'Marker 2 Info',
-    // image: 'https://via.placeholder.com/100x60.png?text=Image+2',
-    link: 'https://example.com/marker2',
-  },
-  {
-    lat: 43.221,
-    lng: -0.231,
-    info: 'Marker 3 Info',
-    // image: 'https://via.placeholder.com/100x60.png?text=Image+3',
-    link: 'https://example.com/marker3',
-  },
-]
+function avgLatLng(markers) {
+  const lat = markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length
+  const lng = markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length
+  return { lat, lng }
+}
+
+const center = ref(avgLatLng(pins))
 
 const activeMarkerIndex = ref(null)
 
@@ -41,10 +25,10 @@ function toggleInfoWindow(index) {
       Toilette conquette
       !!!! &#127881;&#127881;</h1>
     <GoogleMap api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh" :center="center"
-      :zoom="12">
-      <Marker v-for="(marker, index) in markers" :key="index" :options="{ position: marker }"
-        @hover="toggleInfoWindow(index)">
-        <InfoWindow v-if="activeMarkerIndex === index">
+      :zoom="10">
+      <Marker v-for="(marker, index) in pins" :key="index" :options="{ position: marker }"
+        @click="toggleInfoWindow(index)">
+        <InfoWindow>
           <div style="max-width: 160px">
             <!-- <img :src="marker.image" alt="Marker image" style="width: 100%; border-radius: 4px; height: 100%" /> -->
             <p style="margin: 4px 0;">{{ marker.info }}</p>
