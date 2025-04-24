@@ -1,17 +1,27 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map'
 // import { pins } from '@/assets/pins2'
 import axios from 'axios';
 
-const center = ref(avgLatLng(pins))
+
 const pins = ref([])
+const activeMarkerIndex = ref(null)
+const center = ref(avgLatLng(pins))
+
+function avgLatLng(markers) {
+  if (!markers.length) return { lat: 46.619082, lng: 2.457173 }
+  const lat = markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length
+  const lng = markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length
+  return { lat, lng }
+}
+
 
 onMounted(async () => {
   try {
-    const response = await axios.get('https://toilette-conquete.fr/static/pins.js')
+    const response = await axios.get('https://toilette-conquete.fr/static/pins.json')
 
-    pins.value = eval(response.data)
+    pins.value = response.data
 
     center.value = avgLatLng(pins.value)
   } catch (error) {
@@ -19,21 +29,15 @@ onMounted(async () => {
   }
 })
 
-function avgLatLng(markers) {
-  const lat = markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length
-  const lng = markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length
-  return { lat, lng }
-}
-
-const activeMarkerIndex = ref(null)
-
 function toggleInfoWindow(index) {
   console.log('Marker clicked:', index)
   activeMarkerIndex.value = activeMarkerIndex.value === index ? null : index
-}</script>
+}
+
+</script>
 
 <template>
-  <div class="flex justify-center">
+  <div v-if="pins.length > 0" class="flex justify-center">
     <h1 class="flex justify-center text-center text-2xl font-bold m-4" style="text-align: center">&#127881;&#127881; !!!
       Toilette conquette
       !!!! &#127881;&#127881;</h1>
