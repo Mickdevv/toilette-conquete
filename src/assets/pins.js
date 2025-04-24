@@ -1,4 +1,4 @@
-export const pins = 
+
     [
       {
         lat: 43.22208104771956,
@@ -13,13 +13,6 @@ export const pins =
         info: 'Marker 2 Info',
         // image: 'https://via.placeholder.com/100x60.png?text=Image+2',
         link: 'https://example.com/marker2',
-      },
-      {
-        lat: 13.221,
-        lng: -0.231,
-        info: 'Marker 3 Info',
-        // image: 'https://via.placeholder.com/100x60.png?text=Image+3',
-        link: 'https://example.com/marker3',
       },
       {
         lat: 43.221,

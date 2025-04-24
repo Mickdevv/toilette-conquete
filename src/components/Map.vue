@@ -1,14 +1,27 @@
 <script setup>
 import { ref } from 'vue'
 import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map'
-import { pins } from '@/assets/pins'
+// import { pins } from '@/assets/pins'
+import axios from 'axios';
 
+const pins = ref([])
+
+pins.value = await axios.get('https://toilette-conquete.fr/staitc/pins.js')
+  .then(response => {
+    console.warn(response.data)
+    return response.data;
+  })
+  .catch(error => {
+    console.error('Error fetching pins:', error);
+    return [];
+  });
 
 function avgLatLng(markers) {
   const lat = markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length
   const lng = markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length
   return { lat, lng }
 }
+
 
 const center = ref(avgLatLng(pins))
 
