@@ -9,7 +9,7 @@ const pins = ref([])
 pins.value = await axios.get('https://toilette-conquete.fr/static/pins.js')
   .then(response => {
     console.warn(response.data)
-    return response.data;
+    return eval(response.data);
   })
   .catch(error => {
     console.error('Error fetching pins:', error);

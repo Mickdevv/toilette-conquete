@@ -20,5 +20,5 @@
         info: 'Marker 3 Info',
         // image: 'https://via.placeholder.com/100x60.png?text=Image+3',
         link: 'https://example.com/marker3',
-      },
+      }
     ]
