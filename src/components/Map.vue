@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const pins = ref([])
 
-pins.value = await axios.get('https://toilette-conquete.fr/staitc/pins.js')
+pins.value = await axios.get('https://toilette-conquete.fr/static/pins.js')
   .then(response => {
     console.warn(response.data)
     return response.data;
