@@ -39,18 +39,19 @@ function toggleInfoWindow(index) {
 <template>
   <div v-if="pins.length > 0" class="flex justify-center">
     <h1 class="flex justify-center text-center text-2xl font-bold m-4" style="text-align: center">&#127881;&#127881; !!!
-      Toilette conquette
+      Toilette conquete
       !!!! &#127881;&#127881;</h1>
     <GoogleMap api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh" :center="center"
       :zoom="9">
       <Marker v-for="(marker, index) in pins" :key="index" :options="{ position: marker }"
-        @click="toggleInfoWindow(index)">
+        style="background-color: darkgrey;" @click="toggleInfoWindow(index)">
         <InfoWindow>
-          <div style="max-width: 160px">
-            <!-- <img :src="marker.image" alt="Marker image" style="width: 100%; border-radius: 4px; height: 100%" /> -->
+          <div style="max-width: 160px; color: black;">
+            <img :src="marker.image" alt="Marker image" style="width: 100%; border-radius: 4px; height: 100%" />
             <p style="margin: 4px 0;">{{ marker.info }}</p>
-            <a :href="marker.link" target="_blank" style="color: #1a73e8; text-decoration: underline;">
-              More Info
+            <a :href="'https://instagram.com/' + marker.insta" target="_blank"
+              style="color: #1a73e8; text-decoration: underline;">
+              @{{ marker.insta }}
             </a>
           </div>
         </InfoWindow>
