@@ -43,7 +43,7 @@ const moonless_insta = "https://instagram.com/moonlessoff"
           class="banner-img" /></a>
 
       <h1 class="title">
-        🎉 !!! Toilette conquete !!! 🎉
+        Toilette conquete !
       </h1>
 
       <a :href="moonless_insta" target="_blank"><img src="../assets/banner.png" alt="banner" height="50px"
