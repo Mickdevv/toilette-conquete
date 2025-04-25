@@ -37,12 +37,19 @@ function toggleInfoWindow(index) {
 </script>
 
 <template>
-  <div v-if="pins.length > 0" class="flex justify-center">
-    <h1 class="flex justify-center text-center text-2xl font-bold m-4" style="text-align: center">&#127881;&#127881; !!!
-      Toilette conquete
-      !!!! &#127881;&#127881;</h1>
-    <GoogleMap api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh" :center="center"
-      :zoom="9">
+  <div class="">
+    <div class="flex items-center justify-between w-full p-4 banner">
+      <img src="../assets/banner.png" alt="banner" height="50px" class="banner-img" />
+
+      <h1 class="title">
+        🎉 !!! Toilette conquete !!! 🎉
+      </h1>
+
+      <img src="../assets/banner.png" alt="banner" height="50px" class="banner-img" />
+    </div>
+
+    <GoogleMap v-if="pins.length > 0" api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh"
+      :center="center" :zoom="9">
       <Marker v-for="(marker, index) in pins" :key="index" :options="{ position: marker }"
         style="background-color: darkgrey;" @click="toggleInfoWindow(index)">
         <InfoWindow>
@@ -59,3 +66,21 @@ function toggleInfoWindow(index) {
     </GoogleMap>
   </div>
 </template>
+
+<style>
+.banner-img {
+  height: 50px;
+
+}
+
+.title {
+  display: flex;
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
