@@ -4,13 +4,13 @@ import { GoogleMap, Marker, InfoWindow } from 'vue3-google-map'
 // import { pins } from '@/assets/pins2'
 import axios from 'axios';
 
-
+const france_center = { lat: 46.619082, lng: 2.457173 }
 const pins = ref([])
 const activeMarkerIndex = ref(null)
 const center = ref(avgLatLng(pins))
 
 function avgLatLng(markers) {
-  if (!markers.length) return { lat: 46.619082, lng: 2.457173 }
+  if (!markers.length) return france_center
   const lat = markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length
   const lng = markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length
   return { lat, lng }
@@ -23,7 +23,7 @@ onMounted(async () => {
 
     pins.value = response.data
 
-    center.value = avgLatLng(pins.value)
+    center.value = avgLatLng([...pins.value, france_center])
   } catch (error) {
     console.error('Error fetching pins:', error)
   }
