@@ -33,19 +33,21 @@ function toggleInfoWindow(index) {
   console.log('Marker clicked:', index)
   activeMarkerIndex.value = activeMarkerIndex.value === index ? null : index
 }
-
+const moonless_insta = "https://instagram.com/moonlessoff"
 </script>
 
 <template>
   <div class="">
     <div class="flex items-center justify-between w-full p-4 banner">
-      <img src="../assets/banner.png" alt="banner" height="50px" class="banner-img" />
+      <a :href="moonless_insta" target="_blank"><img src="../assets/banner.png" alt="banner" height="50px"
+          class="banner-img" /></a>
 
       <h1 class="title">
         🎉 !!! Toilette conquete !!! 🎉
       </h1>
 
-      <img src="../assets/banner.png" alt="banner" height="50px" class="banner-img" />
+      <a :href="moonless_insta" target="_blank"><img src="../assets/banner.png" alt="banner" height="50px"
+          class="banner-img" /></a>
     </div>
 
     <GoogleMap v-if="pins.length > 0" api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh"
@@ -81,6 +83,12 @@ function toggleInfoWindow(index) {
 
 .banner {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
 }
 </style>
