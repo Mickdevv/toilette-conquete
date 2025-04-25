@@ -51,7 +51,7 @@ const moonless_insta = "https://instagram.com/moonlessoff"
     </div>
 
     <GoogleMap v-if="pins.length > 0" api-key="AIzaSyBLI1ll82HbVqPrmsxH0-2_ZgxJDl1XrQg" style="width: 100%; height:90vh"
-      :center="center" :zoom="9">
+      :center="center" :zoom="7">
       <Marker v-for="(marker, index) in pins" :key="index" :options="{ position: marker }"
         style="background-color: darkgrey;" @click="toggleInfoWindow(index)">
         <InfoWindow>
