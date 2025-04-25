@@ -3,19 +3,8 @@
   {
     "lat": 43.22208104771956,
     "lng": -0.23202803141978387,
-    "info": "Marker 1 Info",
-    "link": "https://example.com/marker1"
-  },
-  {
-    "lat": 43.223,
-    "lng": -0.233,
-    "info": "Marker 2 Info",
-    "link": "https://example.com/marker2"
-  },
-  {
-    "lat": 43.221,
-    "lng": -0.231,
-    "info": "Marker 3 Info",
-    "link": "https://example.com/marker3"
+    "info": "Première toilette conquise !",
+    "link": "https://example.com/marker1",
+    "image": "https://toilette-conquete.fr/static/images/1.jpg"
   }
 ]
